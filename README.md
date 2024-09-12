@@ -9,7 +9,7 @@
   git add . 
   git commit -m "dasha"
   git branch -M main
-  git remote add origin "[https://github.com/L1ch1v1L/0301w1.git](https://github.com/aergijo/dfghnj/)"
+  git remote add origin "https://github.com/aergijo/dfghnj/tree/main"
   git push origin main
 ```
 ## Описание возможности Git
