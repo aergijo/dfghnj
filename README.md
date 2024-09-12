@@ -3,7 +3,7 @@ dfghnj.project
 Версия гита - git version 2.45.2.windows.1
 Кафешка
 ## Создание репозитория, Загрузка исходного кода
->
+
 ```
   git init 
   git add . 
