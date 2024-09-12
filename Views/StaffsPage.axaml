@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:ccaaffee.ViewModels"
+			 xmlns:m="using:ccaaffee.Models"
+            x:DataType="vm:StaffsPageViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ccaaffee.Views.StaffsPage">
+	<Design.DataContext>
+		<vm:DrinksPageViewModel></vm:DrinksPageViewModel>
+	</Design.DataContext>
+	<Grid>
+		<DockPanel>
+			<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+				<Button Margin="5" Command="{Binding Add}" Content="Добавить"></Button>
+				<Button Margin="5" Command="{Binding Delete}" Content="Удалить"></Button>
+				<Button Margin="5" Command="{Binding Save}" Content="Сохранить"></Button>
+				<Button Margin="5" Command="{Binding Update}" Content="Обновить"></Button>
+			</StackPanel>
+			<StackPanel Width="200" DockPanel.Dock="Right">
+				<TextBlock Text="Название"></TextBlock>
+				<TextBox Text="{Binding CurrentStaff.FullName}"></TextBox>
+				<TextBlock Text="Цена"></TextBlock>
+				<NumericUpDown Value="{Binding CurrentStaff.PhoneNumber}"></NumericUpDown>
+			</StackPanel>
+			<ListBox SelectedItem ="{Binding CurrentStaff}" ItemsSource="{Binding Staffs}">
+				<ListBox.DataTemplates>
+					<DataTemplate x:DataType="m:Staff">
+						<StackPanel>
+							<TextBlock Text="{Binding FullName}"/>
+							<TextBlock Text="{Binding PhoneNumber}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.DataTemplates>
+			</ListBox>
+		</DockPanel>
+	</Grid>
+</UserControl>

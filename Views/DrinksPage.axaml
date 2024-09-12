@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ccaaffee.ViewModels"
+			 xmlns:m="using:ccaaffee.Models"
+            x:DataType="vm:DrinksPageViewModel" 
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ccaaffee.Views.DrinkPage">
+
+	<Design.DataContext>
+		<vm:DrinksPageViewModel></vm:DrinksPageViewModel>
+	</Design.DataContext>
+	<Grid>
+		<DockPanel>
+			<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+				<Button Margin="5" Command="{Binding Add}" Content="Добавить"></Button>
+				<Button Margin="5" Command="{Binding Delete}" Content="Удалить"></Button>
+				<Button Margin="5" Command="{Binding Save}" Content="Сохранить"></Button>
+				<Button Margin="5" Command="{Binding Update}" Content="Обновить"></Button>
+			</StackPanel>
+			<StackPanel Width="200" DockPanel.Dock="Right">
+				<TextBlock Text="Название"></TextBlock>
+				<TextBox Text="{Binding Currentdrink.DrinkSelection}"></TextBox>
+				<TextBlock Text="Цена"></TextBlock>
+				<NumericUpDown Value="{Binding Currentdrink.Price}"></NumericUpDown>
+			</StackPanel>
+			<ListBox SelectedItem ="{Binding Currentdrink}" ItemsSource="{Binding Drinks}">
+				<ListBox.DataTemplates>
+					<DataTemplate x:DataType="m:Drink">
+						<StackPanel>
+							<TextBlock Text="{Binding DrinkSelection}"/>
+							<TextBlock Text="{Binding Price}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.DataTemplates>
+			</ListBox>
+		</DockPanel>
+	</Grid>
+</UserControl>
